@@ -3,3 +3,5 @@ algorithm.ipynb
 .ipynb_checkpoints/
 sparta.py
 test.py
+venv
+__pycache__
