@@ -15,13 +15,13 @@ def signup(request):
         phone = request.POST.get('phone','')
         address = request.POST.get('address','')
         
-        User.objects.create(
+        User.objects.create_user(
             username = username,
             phone = phone,
             password = password,
             address = address,
         )
-        return render(request, 'user/login.html')
+        return redirect('login')
 
 
 def login(request):
@@ -30,12 +30,13 @@ def login(request):
     else:
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
-        try:
-            user = User.objects.get(username=username, password = password)
+
+        user = auth.authenticate(request, username=username, password=password)
+        if user is not None:
             auth.login(request, user)
-        except User.DoesNotExist:
+            return redirect("/")
+        else:
             context = {
                 'error' : 'Check your ID or PW'
             }
             return render(request, 'user/login.html', context)
-        return redirect('/')
