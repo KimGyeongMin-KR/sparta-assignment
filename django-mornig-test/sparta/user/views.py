@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
+from django.contrib.auth import views as auth_views
+
 
 from .models import User
 
 # Create your views here.
-
 
 def signup(request):
     if request.method == "GET":
