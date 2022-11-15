@@ -1,0 +1,9 @@
+algorithm.ipynb
+.vscode/
+.ipynb_checkpoints/
+sparta.py
+test.py
+venv
+__pycache__
+db.sqlite3
+migrations
